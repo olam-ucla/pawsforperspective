@@ -6,9 +6,13 @@ title: Results
 
 # Results
 
-Describe it, then add a chart or image:
+## Finding 1: Gender Representation by Species
 
-![Created with Tableau](images/Chart1.png)
+This visualization examines how gender representation varies across different animal species in children's books.
+
+![Gender Representation of Animal Characters](images/Chart1.png)
+
+*Figure 1: Gender Representation of Animal Characters by Species in Children's Books. Male characters dominate most species, particularly foxes (89.47%), dogs (80.49%), and elephants (78.95%). Birds are the only species where female characters outnumber male characters, at 51.35% compared to 43.24%. These findings suggest that gender representation varies by species, with male characters generally appearing more frequently than female characters.*
 
 ## Finding 2
 
