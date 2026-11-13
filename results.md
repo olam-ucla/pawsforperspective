@@ -8,7 +8,7 @@ title: Results
 
 Describe it, then add a chart or image:
 
-![Description of chart](images/Chart1.png)
+![Created with Tableau](images/Chart1.png)
 
 ## Finding 2
 
