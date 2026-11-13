@@ -6,8 +6,6 @@ title: Results
 
 # Results
 
-## Finding 1
-
 Describe it, then add a chart or image:
 
 ![Description of chart](images/Chart1.png)
