@@ -6,6 +6,12 @@ title: Results
 
 # Results
 
+## Introduction to Our Findings
+
+Our project examines how gender is represented through animal characters in children's books published across different historical periods, ranging from 1697 to 2023. Using a dataset of 841 animal-character records, we explore whether certain animal species are more frequently portrayed as male, female, or gender-neutral.
+
+Through visualizations created using Tableau and Palladio, we investigate patterns in gender representation across animal species and examine the relationships between different animals and the pronouns used to describe them.
+
 ## Finding 1: Gender Representation by Species
 
 This visualization examines how gender representation varies across the top ten most frequent animal species in our dataset.
