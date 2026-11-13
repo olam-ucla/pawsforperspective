@@ -8,7 +8,7 @@ title: Results
 
 ## Finding 1: Gender Representation by Species
 
-This visualization examines how gender representation varies across different animal species in children's books.
+This visualization examines how gender representation varies across the top ten most frequent animal species in our dataset.
 
 ![Gender Representation of Animal Characters](images/Chart1.png)
 
