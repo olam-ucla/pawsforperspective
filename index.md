@@ -20,5 +20,5 @@ main result
 - [Methods](methods)
 - [Results](results)
 - [Discussion](discussion)
-- [Team](team)
+- [About](about)
 - [References](references)
