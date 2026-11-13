@@ -1,7 +1,7 @@
-# Welcome to my website
+# Welcome to our website
 
-This is my first page. I'm building it with Jekyll and GitHub Pages.
+This is the website for our Digital Humanities 101 project. 
 
-## About me
+## About
 
-Write a little about yourself here.
+This project was done by Olivia, Spoorthi, Madison, Vivienne, Murad and Anika. 
