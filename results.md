@@ -10,7 +10,7 @@ title: Results
 
 Describe it, then add a chart or image:
 
-![Description of chart](/assets/chart1.png)
+![Description of chart](images/Chart1.png)
 
 ## Finding 2
 
