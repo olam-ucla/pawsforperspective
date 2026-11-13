@@ -8,11 +8,11 @@ This project was done by Olivia, Spoorthi, Madison, Vivienne, Murad and Anika.
 
 ## Summary
 
-Two or three sentences: what question you asked, what you did, and what you found.
+Research questions. 
 
 ## Key finding
 
-State your main result in one sentence.
+main result
 
 ## Explore the project
 
