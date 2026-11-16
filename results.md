@@ -29,3 +29,12 @@ This network visualization examines how different animal species are connected t
 
 *Figure 2: Relationships Between Animal Species and Gender in Children's Books. This network graph illustrates the connections between the ten most frequently represented animal species and three pronoun categories: "he/him," "she/her," and "it." Most species are connected to both male and female pronouns, while fewer are connected to the gender-neutral pronoun "it." The visualization highlights how gender-neutral representation is less widespread across species, reinforcing the broader pattern of gendered representation observed in Figure 1.*
 
+
+
+## Finding 3: Geographic Distribution of Children's Book Publishers
+
+This visualization examines the geographic distribution of publishing headquarters associated with the children's books in our dataset. By mapping publisher headquarters across different cities, we can identify where publishing activity is concentrated and explore how the geographic organization of the publishing industry may influence which stories are produced and circulated.
+
+![Global Distribution of Children's Book Publisher Headquarters](images/Chart3.png)
+
+*Figure 3: Global Distribution of Children's Book Publisher Headquarters. This map visualizes the geographic distribution of 117 publishing imprints across 17 cities. New York City accounts for the largest share, representing 69.2% (81 out of 117) of the publishing imprints and 80.0% of the catalog volume analyzed in the mapping assessment. London follows with 8.5% of imprints. Together, these two cities account for approximately 77.7% of the publishing imprints, highlighting the concentration of publishing headquarters in major Western cities.*
