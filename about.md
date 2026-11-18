@@ -9,5 +9,5 @@ Data Specialist : Spoorthi is a 2nd-year Statistics and Data Science major with 
 Data Visualization Specialist : Anika \
 Web Designer : Madison is a 3rd-year Art History major with a French Minor. She is from San Francisco, CA and
 Content Developer : Murad \
-Editor : Vivienne 
+Editor : Vivienne is a Sociology major with a Public Affairs minor. She is from Santa Clarita, California and has been dancing since she was 5. \
 
