@@ -19,6 +19,7 @@ main result
 - [Background](background)
 - [Methods](methods)
 - [Results](results)
+- [Data Critique](datacritique)
 - [Discussion](discussion)
 - [About](about)
 - [References](references)
