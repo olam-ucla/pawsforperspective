@@ -25,7 +25,15 @@ Our dataset contains 841 animal-character records associated with 284 unique Goo
 
 ## 3. Historical and Geographic Limitations
 
+The books in our dataset have publication years ranging from 1697 to 2023, but they are not evenly distributed across this period. Certain decades contain considerably more records than others.
 
+As a result, changes in gender representation over time may reflect differences in the number and types of books included rather than broader historical trends.
+
+Our original dataset also lacks direct information about authors' nationalities, countries of publication, and story settings.
+
+Although we created an additional geographic visualization using publisher headquarters information, headquarters locations do not necessarily indicate where books were written, originally published, or culturally situated.
+
+These limitations make it difficult to draw conclusions about gender representation across different countries and cultures.
 
 ## 4. Data Structure and Sample Size
 
