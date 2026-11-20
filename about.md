@@ -10,6 +10,6 @@ Project Manager : Olive is a Statistics & Data Science major with a Film minor (
 Data Specialist : Spoorthi is a 2nd-year Statistics and Data Science major with a Data Science Engineering Minor. She is from Charlotte, NC, and loves kombucha! \
 Data Visualization Specialist : Anika \
 Web Designer : Madison is a 3rd-year Art History major with a French Minor. She is from San Francisco, CA and
-Content Developer : Murad \
+Content Developer : Murad is a 2nd-year Digital Humanities major. He is from Stockton, California. \
 Editor : Vivienne is a Sociology major with a Public Affairs minor. She is from Santa Clarita, California and has been dancing since she was 5. 
 
