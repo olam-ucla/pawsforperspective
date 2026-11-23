@@ -3,72 +3,153 @@
 
 @import "{{ site.theme }}";
 
-/* ---------- Collage banner ---------- */
-.collage {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 8px;
-  height: 340px;
-  margin: 0 0 2rem;
-}
+$accent: #b5532d;
+$ink: #2b2b2b;
 
-.collage-tile {
+/* ---------- Header with picture collage ---------- */
+.site-header {
   position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #d9efe6, #f3e9d2);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-}
-
-.collage-tile:first-child { grid-row: span 2; }
-
-/* shows only if the image is missing */
-.collage-tile::before {
-  content: "Add a picture";
-  position: absolute;
-  inset: 0;
+  min-height: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #6b8f84;
-  font-size: 0.9rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, #3b3a39, #6b5b4e); /* shows until you add pictures */
 }
 
-.collage-tile img {
+/* Pictures: first one is big, the rest fill two rows beside it. Works with any number. */
+.collage-hero {
   position: absolute;
   inset: 0;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 2fr;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 3px;
+}
+
+.collage-hero img {
+  display: block;
   width: 100%;
   height: 100%;
+  min-width: 0;
+  min-height: 0;
   object-fit: cover;
+}
+
+.collage-hero img:first-child { grid-row: span 2; }
+.collage-hero img:last-child:nth-child(even) { grid-row: span 2; }
+
+.site-header-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.38);
+}
+
+.site-header-text {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 1.2rem 2rem;
+  margin: 1rem;
+  background: rgba(0, 0, 0, 0.32);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  border-radius: 14px;
+  max-width: 44rem;
+}
+
+.site-title {
+  margin: 0 0 0.4rem;
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.site-title a,
+.site-title a:hover {
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.site-tagline {
   margin: 0;
-  border-radius: 0;
-  transition: transform 0.4s ease;
+  font-size: 1.15rem;
+  color: #f3efe9;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
 
-.collage-tile:hover img { transform: scale(1.06); }
-
-.photo-credit {
-  font-size: 0.8rem;
-  color: #888;
-  margin-top: -1.4rem;
-  margin-bottom: 2rem;
+/* ---------- Link bar ---------- */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid #e6e1db;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
+
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+.site-nav li { margin: 0; }
+
+.site-nav a {
+  display: block;
+  padding: 15px 18px 12px;
+  color: $ink;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.site-nav a:hover {
+  color: $accent;
+  background: #faf6f1;
+  border-bottom-color: #e2b9a4;
+  text-decoration: none;
+}
+
+.site-nav a.active {
+  color: $accent;
+  border-bottom-color: $accent;
+}
+
+/* ---------- Page colors (replacing the theme's blue and green) ---------- */
+.main-content h1,
+.main-content h2,
+.main-content h3,
+.main-content h4,
+.main-content h5,
+.main-content h6 { color: $ink; }
+
+.main-content a { color: $accent; }
 
 /* ---------- Intro / research question ---------- */
 .big-question {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   line-height: 1.3;
   text-align: center;
   margin: 1rem 0 0.5rem;
-  color: #159957;
+  color: $accent;
+  font-weight: 700;
 }
 
 .subtle { text-align: center; color: #666; margin-bottom: 1.5rem; }
 
 .question-card {
-  background: #f4fbf7;
-  border-left: 5px solid #159957;
+  background: #fbf5f0;
+  border-left: 5px solid $accent;
   border-radius: 8px;
   padding: 14px 18px;
   margin: 12px 0;
@@ -77,7 +158,7 @@
 /* ---------- Pronoun mini-activity ---------- */
 .try-it {
   background: #fff;
-  border: 2px dashed #9bd3b6;
+  border: 2px dashed #e2b9a4;
   border-radius: 12px;
   padding: 18px;
   margin: 1.5rem 0;
@@ -95,9 +176,9 @@
 .pronoun-buttons button {
   font-size: 1.05rem;
   padding: 10px 22px;
-  border: 2px solid #159957;
+  border: 2px solid $accent;
   background: #fff;
-  color: #159957;
+  color: $accent;
   border-radius: 999px;
   cursor: pointer;
   transition: all 0.15s ease;
@@ -105,42 +186,12 @@
 
 .pronoun-buttons button:hover,
 .pronoun-buttons button.active {
-  background: #159957;
+  background: $accent;
   color: #fff;
   transform: translateY(-2px);
 }
 
 #pronoun-result { min-height: 3em; margin: 8px 0 0; }
-
-/* ---------- Navigation tiles ---------- */
-.tile-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  gap: 16px;
-  margin: 1.2rem 0 2rem;
-}
-
-.tile {
-  display: block;
-  padding: 18px;
-  background: #fff;
-  border: 1px solid #e3ece7;
-  border-radius: 12px;
-  text-decoration: none;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-}
-
-.tile:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
-  border-color: #159957;
-  text-decoration: none;
-}
-
-.tile .tile-icon { font-size: 1.8rem; display: block; margin-bottom: 6px; }
-.tile .tile-title { font-weight: bold; color: #155799; display: block; margin-bottom: 4px; }
-.tile .tile-desc { color: #666; font-size: 0.9rem; line-height: 1.4; display: block; }
 
 /* ---------- Key finding callout ---------- */
 .callout {
@@ -153,11 +204,9 @@
 
 /* ---------- Mobile ---------- */
 @media (max-width: 700px) {
-  .collage {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1.4fr 1fr 1fr;
-    height: 420px;
-  }
-  .collage-tile:first-child { grid-column: span 2; grid-row: span 1; }
-  .big-question { font-size: 1.3rem; }
+  .site-header { min-height: 260px; }
+  .site-title { font-size: 1.8rem; }
+  .site-tagline { font-size: 1rem; }
+  .site-nav ul { justify-content: flex-start; }
+  .big-question { font-size: 1.35rem; }
 }
