@@ -1,3 +1,9 @@
 theme: jekyll-theme-cayman
 title: Paws for Perspective
 description: Pronouns for animal characters in children's books | DGTHUM 101 Project
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
