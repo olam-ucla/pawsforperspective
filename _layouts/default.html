@@ -29,6 +29,9 @@
       {% endfor %}
     </div>
     <div class="site-header-overlay"></div>
+    {% if shown == 0 %}
+    <p class="collage-hint">Collage: upload pictures to the images/collage folder and they will appear here.</p>
+    {% endif %}
 
     <div class="site-header-text">
       <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
