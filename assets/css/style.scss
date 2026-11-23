@@ -202,6 +202,104 @@ $ink: #2b2b2b;
   margin: 1rem 0 2rem;
 }
 
+.collage-hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  z-index: 1;
+  margin: 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #e9dfd6;
+}
+
+/* ---------- About page: team cards ---------- */
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.bio-card {
+  flex: 0 0 calc((100% - 48px) / 3);
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #ece6df;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.bio-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+
+.photo-placeholder {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #eee6dd;
+  color: $accent;
+  font-size: 3rem;
+  line-height: 150px;
+  margin: 0 auto 12px;
+}
+
+.bio-card h2 { margin: 8px 0 4px; font-size: 1.3rem; }
+.bio-card .role { margin: 0 0 12px; font-weight: bold; color: #777; }
+.bio-card p { line-height: 1.5; }
+
+/* ---------- About page: LinkedIn links ---------- */
+.linkedin-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 1rem 0 2rem;
+}
+
+.linkedin-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border: 2px solid $accent;
+  border-radius: 999px;
+  color: $accent;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.linkedin-link:hover {
+  background: $accent;
+  color: #fff;
+  text-decoration: none;
+}
+
+.main-content .linkedin-link:hover { color: #fff; }
+
+.in-badge {
+  display: inline-block;
+  min-width: 1.6em;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: $accent;
+  color: #fff;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.linkedin-link:hover .in-badge { background: #fff; color: $accent; }
+
 /* ---------- Mobile ---------- */
 @media (max-width: 700px) {
   .site-header { min-height: 260px; }
@@ -209,4 +307,9 @@ $ink: #2b2b2b;
   .site-tagline { font-size: 1rem; }
   .site-nav ul { justify-content: flex-start; }
   .big-question { font-size: 1.35rem; }
+  .bio-card { flex: 0 0 calc((100% - 24px) / 2); }
+}
+
+@media (max-width: 520px) {
+  .bio-card { flex: 0 0 100%; }
 }
