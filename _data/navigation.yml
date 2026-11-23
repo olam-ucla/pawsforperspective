@@ -1,0 +1,17 @@
+# The link bar under the header. Edit titles or add/remove pages here.
+- title: Home
+  url: /
+- title: Background
+  url: /background
+- title: Methods
+  url: /methods
+- title: Results
+  url: /results
+- title: Data Critique
+  url: /datacritique
+- title: Discussion
+  url: /discussion
+- title: About
+  url: /about
+- title: References
+  url: /references
