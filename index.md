@@ -3,8 +3,6 @@ layout: default
 title: Home
 ---
 
-# Welcome to our website
-
 <p class="big-question">Is a bear a he or a she?</p>
 <p class="subtle">And who decides?</p>
 
@@ -38,14 +36,12 @@ document.querySelectorAll('.pronoun-buttons button').forEach(function (btn) {
 });
 </script>
 
-## About
-
-This project was done by Olive, Spoorthi, Madison, Vivienne, Murad and Anika. Meet the team on the [About](about) page.
-
 ## Key finding
 
 <div class="callout"><strong>Main result:</strong> Replace this with your key finding once your analysis is done.</div>
 
-## Explore the project
+## Image credits
 
-Use the links in the bar at the top of the page to move between sections: Background, Methods, Results, Data Critique, Discussion, About and References.
+- Picture 1: title, creator, and link to the source
+- Picture 2: title, creator, and link to the source
+- Picture 3: title, creator, and link to the source
