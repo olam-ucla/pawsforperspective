@@ -58,7 +58,16 @@
         </li>
       {% endfor %}
     </ul>
+
+    <!-- Search box -->
+    <div class="site-search">
+      <input type="search" id="site-search-input" placeholder="Search the site" aria-label="Search the site" autocomplete="off">
+      <div class="search-results" id="search-results" hidden aria-live="polite"></div>
+    </div>
   </nav>
+
+  <!-- The pages the search looks through (taken from _data/navigation.yml) -->
+  <script id="search-pages" type="application/json">[{% for item in site.data.navigation %}{"title": {{ item.title | jsonify }}, "url": {{ item.url | relative_url | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]</script>
 
   <main id="content" class="main-content" role="main">
     {{ content }}
@@ -67,5 +76,145 @@
       <span class="site-footer-owner">{{ site.title }} &middot; DGTHUM 101</span>
     </footer>
   </main>
+
+  <script>
+  // SITE SEARCH: reads the text of every page in the link bar the first time you click the box,
+  // then searches it in your browser. No outside service needed.
+  (function () {
+    var box = document.querySelector('.site-search');
+    if (!box) return;
+    var input = document.getElementById('site-search-input');
+    var panel = document.getElementById('search-results');
+    var pages = JSON.parse(document.getElementById('search-pages').textContent);
+    var index = null;
+    var loading = null;
+
+    function esc(s) {
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+    function reEsc(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+    function sections(p, html) {
+      var doc = new DOMParser().parseFromString(html, 'text/html');
+      var main = doc.querySelector('#content');
+      if (!main) return [];
+      main.querySelectorAll('script, style, footer').forEach(function (n) { n.remove(); });
+      var out = [];
+      var cur = { page: p.title, heading: p.title, url: p.url, text: '' };
+      Array.prototype.forEach.call(main.children, function (el) {
+        if (/^H[1-3]$/.test(el.tagName)) {
+          out.push(cur);
+          cur = { page: p.title, heading: el.textContent.trim(), url: p.url + (el.id ? '#' + el.id : ''), text: '' };
+        } else {
+          cur.text += ' ' + el.textContent;
+        }
+      });
+      out.push(cur);
+      out.forEach(function (s) { s.text = s.text.replace(/\s+/g, ' ').trim(); });
+      return out.filter(function (s) { return s.text || s.heading !== p.title; });
+    }
+
+    function load() {
+      if (index) return Promise.resolve(index);
+      if (loading) return loading;
+      loading = Promise.all(pages.map(function (p) {
+        return fetch(p.url)
+          .then(function (r) { return r.ok ? r.text() : ''; })
+          .catch(function () { return ''; })
+          .then(function (html) { return html ? sections(p, html) : []; });
+      })).then(function (lists) {
+        index = [].concat.apply([], lists);
+        return index;
+      });
+      return loading;
+    }
+
+    function snippet(text, terms) {
+      var lower = text.toLowerCase();
+      var at = -1;
+      terms.forEach(function (t) {
+        var i = lower.indexOf(t);
+        if (i !== -1 && (at === -1 || i < at)) at = i;
+      });
+      if (at === -1) at = 0;
+      var start = Math.max(0, at - 50);
+      var piece = text.slice(start, start + 150);
+      return (start > 0 ? '…' : '') + piece + (start + 150 < text.length ? '…' : '');
+    }
+
+    function highlight(raw, terms) {
+      var safe = esc(raw);
+      terms.forEach(function (t) {
+        safe = safe.replace(new RegExp(reEsc(esc(t)), 'gi'), '<mark>$&</mark>');
+      });
+      return safe;
+    }
+
+    function search(q) {
+      var terms = q.toLowerCase().split(/\s+/).filter(Boolean);
+      var scored = [];
+      index.forEach(function (s) {
+        var head = s.heading.toLowerCase();
+        var body = s.text.toLowerCase();
+        var page = s.page.toLowerCase();
+        var score = 0;
+        for (var i = 0; i < terms.length; i++) {
+          var t = terms[i];
+          var inHead = head.indexOf(t) !== -1;
+          var inBody = body.indexOf(t) !== -1;
+          var inPage = page.indexOf(t) !== -1;
+          if (!inHead && !inBody && !inPage) return;
+          score += (inHead ? 5 : 0) + (inPage ? 2 : 0) + (inBody ? 1 : 0);
+        }
+        scored.push({ s: s, score: score });
+      });
+      scored.sort(function (a, b) { return b.score - a.score; });
+      return { terms: terms, hits: scored.slice(0, 8).map(function (x) { return x.s; }) };
+    }
+
+    function show(html) { panel.innerHTML = html; panel.hidden = false; }
+    function hide() { panel.hidden = true; }
+
+    function run() {
+      var q = input.value.trim();
+      if (!q) { hide(); return; }
+      show('<p class="sr-note">Searching…</p>');
+      load().then(function () {
+        if (input.value.trim() !== q) return;
+        var res = search(q);
+        if (!res.hits.length) {
+          show('<p class="sr-note">No results for “' + esc(q) + '”</p>');
+          return;
+        }
+        show(res.hits.map(function (s) {
+          return '<a href="' + esc(s.url) + '">' +
+            '<span class="sr-page">' + esc(s.page) + '</span>' +
+            '<span class="sr-heading">' + highlight(s.heading, res.terms) + '</span>' +
+            (s.text ? '<span class="sr-snippet">' + highlight(snippet(s.text, res.terms), res.terms) + '</span>' : '') +
+            '</a>';
+        }).join(''));
+      });
+    }
+
+    input.addEventListener('focus', function () { load(); if (input.value.trim()) run(); });
+    input.addEventListener('input', run);
+    input.addEventListener('keydown', function (e) {
+      var links = Array.prototype.slice.call(panel.querySelectorAll('a'));
+      var current = links.indexOf(document.activeElement);
+      if (e.key === 'Escape') { hide(); input.blur(); }
+      else if (e.key === 'ArrowDown' && links.length) { e.preventDefault(); links[Math.min(current + 1, links.length - 1)].focus(); }
+      else if (e.key === 'Enter' && links.length) { e.preventDefault(); window.location.href = links[0].getAttribute('href'); }
+    });
+    panel.addEventListener('keydown', function (e) {
+      var links = Array.prototype.slice.call(panel.querySelectorAll('a'));
+      var current = links.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown') { e.preventDefault(); links[Math.min(current + 1, links.length - 1)].focus(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); if (current <= 0) input.focus(); else links[current - 1].focus(); }
+      else if (e.key === 'Escape') { hide(); input.focus(); }
+    });
+    document.addEventListener('click', function (e) { if (!box.contains(e.target)) hide(); });
+    panel.addEventListener('click', function () { hide(); });
+  })();
+  </script>
 </body>
 </html>
