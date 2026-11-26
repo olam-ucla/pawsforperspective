@@ -33,7 +33,7 @@ title: About
 </div>
 <h2>Anika</h2>
 <p class="role">Data Visualization Specialist</p>
-<p>Bio coming soon.</p>
+<p>Anika is a 3rd-year Statistics and Data Science major with a History Minor. She is from San Jose, CA.</p>
 </div>
 <div class="bio-card">
 <div class="bio-photo">
