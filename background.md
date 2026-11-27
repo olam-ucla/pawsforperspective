@@ -14,7 +14,7 @@ Our project asks a variety of questions!
 
 How did gender representation among animal characters in popular English-language picture books change from the 1950s through the 1990s? We also wanted to see what the overall totals might hide. Did female characters become more common with each decade? Were some animals consistently more likely to be portrayed as male?
 
-To explore these questions, we use two datasets from The Pudding's [_Bears Will Be Boys__]([url](https://pudding.cool/2025/07/kids-books/)). The first records how picture books refer to animal characters, including pronouns such as “she” and “he” and family roles such as “mother” or “brother.” Our analysis focuses on books published from 1950 through 1999. The second dataset comes from a survey in which respondents finished a short story about one of seven animals. Comparing the two lets us ask whether the same animals tend to be called “he” in published books and in stories people make up themselves. Whether particular books influenced those choices remains an open question.
+To explore these questions, we use two datasets from The Pudding's [_Bears Will Be Boys_]([url](https://pudding.cool/2025/07/kids-books/)). The first records how picture books refer to animal characters, including pronouns such as “she” and “he” and family roles such as “mother” or “brother.” Our analysis focuses on books published from 1950 through 1999. The second dataset comes from a survey in which respondents finished a short story about one of seven animals. Comparing the two lets us ask whether the same animals tend to be called “he” in published books and in stories people make up themselves. Whether particular books influenced those choices remains an open question.
 
 ## Why it matters
 
